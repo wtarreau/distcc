@@ -199,6 +199,13 @@ int dcc_scan_args(char *argv[], char **input_file, char **output_file,
                     rs_trace("%s must be local", a);
                     return EXIT_DISTCC_FAILED;
                 }
+                else if (!str_startswith("-Wa,-", a)) {
+                    /* anything other than a '-' after -Wa, designates a local
+                     * file, so we must definitely not send that to a remote.
+                     */
+                    rs_trace("%s must be local", a);
+                    return EXIT_DISTCC_FAILED;
+                }
             } else if (str_startswith("-specs=", a)) {
                 rs_trace("%s must be local", a);
                 return EXIT_DISTCC_FAILED;
