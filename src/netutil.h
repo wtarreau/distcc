@@ -27,6 +27,7 @@ int dcc_sockaddr_to_string(struct sockaddr *sa,
 
 void dcc_set_nonblocking(int fd);
 void dcc_set_blocking(int fd);
+void dcc_set_nodelay(int fd);
 
 
 #ifndef HAVE_HSTRERROR

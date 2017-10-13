@@ -127,6 +127,16 @@ void dcc_set_nonblocking(int fd)
     }
 }
 
+/**
+ * Set TCP_NODELAY on an fd
+ **/
+void dcc_set_nodelay(int fd)
+{
+    int one = 1;
+
+    setsockopt(fd, IPPROTO_TCP, TCP_NODELAY, &one, sizeof(one));
+}
+
 
 /* Ask for the server not to be awakened until some data has arrived
  * on the socket.  This works for our protocol because the client

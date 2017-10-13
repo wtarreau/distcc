@@ -103,6 +103,7 @@ int dcc_connect_by_addr(struct sockaddr *sa, size_t salen,
     }
 
     dcc_set_nonblocking(fd);
+    dcc_set_nodelay(fd);
 
     /* start the nonblocking connect... */
     do
